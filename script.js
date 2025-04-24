@@ -5,18 +5,17 @@
 //     trailer.classList.toggle('active')
 // }
 
-$(document).ready(function(){
-    var $scramble = $(".etflix-text");
-    $scramble.scramble(1500, 15,"alphabet", true);
-});
+function changeBg(bg, title) {
+    const banner = document.querySelector('.banner');
+    const contents = document.querySelectorAll('.content');
+    banner.style.background = `url("../page1/movie image/${bg}")`;
+    banner.style.backgroundSize = 'cover';
+    banner.style.backgroundPosition = 'center';
 
-var t1 = gsap.timeline();
-t1.to(".etflix-text",{
-    opacity: 0,
-    delay: 2.5,
-})
-.to(".intro-container",{
-    opacity: 0,
-    duration: 0.5,
-    ease:"Expo.easeInOut"
-})
+    contents.forEach(content => {
+        content.classList.remove ('active');
+        if(content.classList.contains(title)){
+            content.classList.add('active');
+        }
+    });
+}
